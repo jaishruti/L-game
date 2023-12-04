@@ -46,6 +46,7 @@
   width: 100%;
   /* background-color: black; */
   height: 100%;
+  font-size: 3rem;
 }
 .box1,
 .box2,
@@ -64,6 +65,15 @@
   border-right: 2px solid white;
 }
 
-.active {
-  display: inline;
+.new-game-btn {
+  display: none;
+  position: absolute;
+  cursor: pointer;
+}
+.new-game-btn .active {
+  display: flex;
+}
+
+.win {
+  background-color: green;
 }
