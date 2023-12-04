@@ -28,10 +28,45 @@ function init() {
   newBtn.classList.remove("active");
 
   //UI change
-  boxes.forEach((index) => {
-    boxes[index].style.pointerEvents = "all";
-    boxes[index].innerText = "";
+  //   boxes.forEach((index) => {
+  //     boxes[index].style.pointerEvents = "all";
+  //     boxes[index].innerText = "";
+  //   });
+
+  //adding event listener
+
+  boxes.forEach((box, index) => {
+    box.addEventListener("click", () => {
+      handleClick(index);
+    });
   });
+}
+
+function handleClick(index) {
+  if (gameGrid[index] === "") {
+    boxes[index].innerText = currentPlayer;
+    gameGrid[index] = currentPlayer;
+
+    //ab aur change nhi kar sakte (unclickable banao)
+    boxes[index].style.pointerEvents = "none";
+
+    //ab player 2/1 ka turn (swap)
+    currentPlayer = currentPlayer === "A" ? "B" : "A";
+
+    //check karo kahi win toh nahi
+    checkForWinner();
+
+    //also check tie to nhi
+    let flag = 0;
+    gameGrid.forEach((index) => {
+      if (index === "") flag = 1;
+    });
+
+    //tie hai
+    if (flag === 0) {
+      gameInfo.innerText = `Oops Game tied!`;
+    }
+  }
 }
 
 init();
