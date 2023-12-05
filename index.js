@@ -1,6 +1,7 @@
 const gameInfo = document.querySelector(".game-info");
 const newBtn = document.querySelector(".new-game-btn");
 const boxes = document.querySelectorAll(".box");
+const head = document.querySelector(".heading");
 
 let currentPlayer;
 let gameGrid;
@@ -58,8 +59,8 @@ function checkForWinner() {
         // make new game button visible
         newBtn.classList.add("active");
         gameInfo.classList.add("win");
-
         //aur tie check nahi krna
+        head.innerText = "Hurray! You Won";
         return;
       }
     }
@@ -83,6 +84,8 @@ function checkForWinner() {
 
 function init() {
   currentPlayer = "A";
+  head.innerText = "Form an L-shape to win";
+
   gameGrid = ["", "", "", "", "", "", "", "", ""];
   gameInfo.innerHTML = `Current player - ${currentPlayer}`;
 
