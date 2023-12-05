@@ -83,6 +83,9 @@
   transform: translateY(8rem);
 }
 
+.new-game-btn:hover {
+  background-color: black;
+}
 .active {
   display: flex;
 }
