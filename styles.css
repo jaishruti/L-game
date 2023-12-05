@@ -7,7 +7,7 @@
   font-family: "Tangerine", serif;
   font-size: 30px;
   color: aliceblue;
-  overflow: hidden;
+  overflow-x: hidden;
 }
 .heading {
   font-family: "Trirong", serif;
