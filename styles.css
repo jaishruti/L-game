@@ -83,7 +83,7 @@
   transform: translateY(8rem);
 }
 
-.new-game-btn .active {
+.active {
   display: flex;
 }
 
