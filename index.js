@@ -16,22 +16,50 @@ const win = [
   [4, 5, 6, 9],
   [4, 5, 6, 3],
   [4, 5, 6, 7],
-  [4, 5, 6, 2],
+  [4, 5, 6, 1],
 ];
+
+function checkForWinner() {
+  win.forEach((pos) => {
+    if (
+      gameGrid[pos[0]] &&
+      gameGrid[pos[1]] &&
+      gameGrid[pos[2]] &&
+      gameGrid[pos[3]]
+    ) {
+      if (
+        gameGrid[pos[1]] === gameGrid[pos[0]] &&
+        gameGrid[pos[2]] === gameGrid[pos[1]] &&
+        gameGrid[pos[3]] === gameGrid[pos[2]]
+      ) {
+        //game-info ko change "winner"
+        gameInfo.innerHTML = `Winner player - ${currentPlayer}`;
+
+        //make win position green
+        boxes[pos[0]].classList.add("win");
+
+        // make new game button visible
+        newBtn.classList.add("active");
+        gameInfo.classList.add("win");
+      }
+    }
+  });
+}
 
 function init() {
   currentPlayer = "A";
   gameGrid = ["", "", "", "", "", "", "", "", ""];
   gameInfo.innerHTML = `Current player - ${currentPlayer}`;
 
+  gameInfo.classList.remove("win");
   //new game button initially not visible
   newBtn.classList.remove("active");
 
   //UI change
-  //   boxes.forEach((index) => {
-  //     boxes[index].style.pointerEvents = "all";
-  //     boxes[index].innerText = "";
-  //   });
+  boxes.forEach((box) => {
+    box.style.pointerEvents = "all";
+    box.innerText = "";
+  });
 
   //adding event listener
 
@@ -52,6 +80,7 @@ function handleClick(index) {
 
     //ab player 2/1 ka turn (swap)
     currentPlayer = currentPlayer === "A" ? "B" : "A";
+    gameInfo.innerText = `Current player - ${currentPlayer}`;
 
     //check karo kahi win toh nahi
     checkForWinner();
@@ -65,6 +94,9 @@ function handleClick(index) {
     //tie hai
     if (flag === 0) {
       gameInfo.innerText = `Oops Game tied!`;
+      newBtn.classList.add("active");
+      gameInfo.classList.add("win");
+      newBtn.addEventListener("click", init);
     }
   }
 }
