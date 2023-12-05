@@ -7,6 +7,7 @@
   font-family: "Tangerine", serif;
   font-size: 30px;
   color: aliceblue;
+  overflow: hidden;
 }
 
 .wrapper {
@@ -79,11 +80,11 @@
   cursor: pointer;
   max-width: 5.5rem;
   width: 100%;
-}
-.new-game-btn,
-.active {
-  display: flex;
   transform: translateY(8rem);
+}
+
+.new-game-btn .active {
+  display: flex;
 }
 
 .win {
